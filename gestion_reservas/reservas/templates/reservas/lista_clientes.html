@@ -1,0 +1,25 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Clientes</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Clientes</h1>
+        <ul>
+            {% for cliente in clientes %}
+                <li>
+                    {{ cliente.nombre }} - {{ cliente.email }} - {{ cliente.telefono }}
+                    [<a href="{% url 'editar_cliente' cliente.id %}">Editar</a>]
+                    [<a href="{% url 'eliminar_cliente' cliente.id %}" onclick="return confirm('¿Eliminar cliente?');">Eliminar</a>]
+                    [<a href="{% url 'lista_reservas_cliente' cliente.id %}">Ver reservas</a>]
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
+</html>

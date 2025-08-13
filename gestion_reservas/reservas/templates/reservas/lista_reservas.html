@@ -1,0 +1,24 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Lista de Reservas{% endblock %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Reservas</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Reservas</h1>
+    <ul>
+        {% for reserva in reservas %}
+            <li>
+                {{ reserva.cliente.nombre }} - {{ reserva.fecha }} - {{ reserva.detalles }}
+                [<a href="{% url 'editar_reserva' reserva.id %}">Editar</a>]
+                [<a href="{% url 'eliminar_reserva' reserva.id %}" onclick="return confirm('¿Eliminar reserva?');">Eliminar</a>]
+            </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Gestión de Reservas{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'lista_clientes' %}">Clientes</a> |
+        <a href="{% url 'agregar_cliente' %}">Agregar Cliente</a> |
+        <a href="{% url 'lista_reservas' %}">Reservas</a> |
+        <a href="{% url 'agregar_reserva' %}">Agregar Reserva</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
