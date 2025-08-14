@@ -1,0 +1,27 @@
+# Entorno virtual
+venv/
+ENV/
+env/
+
+# Archivos de bases de datos locales
+*.sqlite3
+
+# Archivos compilados / caché de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Configuraciones locales de IDEs
+.vscode/
+.idea/
+
+# Node / frontend
+frontend/node_modules/
+frontend/build/
+
+# Archivos de logs
+*.log
+
+# Otros archivos temporales
+*.swp
+.DS_Store
