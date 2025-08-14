@@ -76,14 +76,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gestion_reservas.wsgi.application'
 
+AUTH_USER_MODEL = 'reservas.Usuario'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gestion_reservas',     # nombre de la base que creaste
+        'USER': 'postgres',             # tu usuario de PostgreSQL
+        'PASSWORD': 'cordrack88',       # la contraseña correspondiente
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
