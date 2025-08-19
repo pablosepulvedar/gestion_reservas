@@ -7,6 +7,7 @@ function ReservasPage() {
   const [reservas, setReservas] = useState([]);
   const [clientes, setClientes] = useState([]);
   const [servicios, setServicios] = useState([]);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false); // 👈 nuevo estado
 
   // Cargar reservas, clientes y servicios al iniciar
   useEffect(() => {
@@ -17,6 +18,7 @@ function ReservasPage() {
 
   const agregarReserva = (nuevaReserva) => {
     setReservas([...reservas, nuevaReserva]);
+    setMostrarFormulario(false); // 👈 volver a la lista después de agregar
   };
 
   const eliminarReserva = (id) => {
@@ -41,25 +43,43 @@ function ReservasPage() {
     <div className="container my-4">
       <h1 className="text-center mb-4">Gestión de Reservas</h1>
 
-      {/* Formulario Agregar Reserva */}
-      <div className="mb-4 p-3 border rounded shadow-sm bg-light">
-        <AgregarReserva 
-          onReservaAgregada={agregarReserva} 
-          clientes={clientes} 
-          servicios={servicios} 
-        />
-      </div>
+      {/* Botón para alternar */}
+      {!mostrarFormulario ? (
+        <button 
+          className="btn btn-primary mb-3"
+          onClick={() => setMostrarFormulario(true)}
+        >
+          ➕ Nueva Reserva
+        </button>
+      ) : (
+        <button 
+          className="btn btn-secondary mb-3"
+          onClick={() => setMostrarFormulario(false)}
+        >
+          🔙 Volver al Listado
+        </button>
+      )}
 
-      {/* Lista de Reservas */}
-      <div className="table-responsive">
-        <ListaReservas
-          reservas={reservas}
-          clientes={clientes}
-          servicios={servicios}
-          onEliminar={eliminarReserva}
-          onEditar={editarReserva}
-        />
-      </div>
+      {/* Mostrar listado o formulario según estado */}
+      {!mostrarFormulario ? (
+        <div className="table-responsive">
+          <ListaReservas
+            reservas={reservas}
+            clientes={clientes}
+            servicios={servicios}
+            onEliminar={eliminarReserva}
+            onEditar={editarReserva}
+          />
+        </div>
+      ) : (
+        <div className="mb-4 p-3 border rounded shadow-sm bg-light">
+          <AgregarReserva 
+            onReservaAgregada={agregarReserva} 
+            clientes={clientes} 
+            servicios={servicios} 
+          />
+        </div>
+      )}
     </div>
   );
 }

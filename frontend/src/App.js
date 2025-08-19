@@ -21,8 +21,8 @@ function App() {
       <div className="my-4" style={{ marginLeft: "10px", marginRight: "20px" }}>
         {/* Menú de navegación */}
         <nav className="mb-4 p-3 bg-light rounded shadow-sm d-flex justify-content-center flex-wrap">
-          <Link to="/clientes" className="btn btn-outline-primary mx-2 my-1">Clientes</Link>
           <Link to="/reservas" className="btn btn-outline-success mx-2 my-1">Reservas</Link>
+          <Link to="/clientes" className="btn btn-outline-primary mx-2 my-1">Clientes</Link>
           <Link to="/servicios" className="btn btn-outline-info mx-2 my-1">Servicios</Link>
           <Link to="/usuarios" className="btn btn-outline-warning mx-2 my-1">Usuarios</Link>
           <button
@@ -36,8 +36,8 @@ function App() {
         {/* Rutas */}
         <div className="p-3 border rounded shadow-sm bg-white">
           <Routes>
-            <Route path="/clientes" element={<ClientesPage />} />
             <Route path="/reservas" element={<ReservasPage />} />
+            <Route path="/clientes" element={<ClientesPage />} />
             <Route path="/servicios" element={<ServiciosPage />} />
             <Route path="/usuarios" element={<UsuariosPage />} />
           </Routes>
